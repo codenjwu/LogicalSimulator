@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form action="/home/setup" method="post">
+    <p>Select Type</p>
+    <input type="radio" id="Infinity" name="isPeriod" value="Infinity" checked />Infinity
+    <br />
+    <input type="radio" id="Period" name="isPeriod" value="Period" />Period
+    <p>Set Up Run Time</p>
+    <input type="number" id="Minutes" name="minutes" placeholder="minutes" disabled="disabled" />
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("input[name=isPeriod]").on('click', function (e) {
+                console.log(e)
+                if ($('#Period').is(':checked')) {
+                    $('#Minutes').removeAttr('disabled');
+                } else {
+                    $('#Minutes').prop('disabled', 'disabled');
+                }
+            })
+        })
+    </script>
+}
