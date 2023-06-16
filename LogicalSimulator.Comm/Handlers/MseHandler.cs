@@ -55,14 +55,14 @@ namespace LogicalSimulator.Comm.Handlers
             System.Diagnostics.Debug.WriteLine("Period Movement Started!!");
             System.Diagnostics.Debug.WriteLine($"Run Time Set: {totalMilSeconds / 60 / 1000} minutes");
             mainTimer.Interval = totalMilSeconds;
-            mainTimer.Elapsed += (sender, e) =>
+            mainTimer.Elapsed += async (sender, e) =>
             {
                 timer.Stop();
                 int existTime = 5;
                 do
                 {
                     System.Diagnostics.Debug.WriteLine($"Program will be exist in {existTime} seconds");
-                    Thread.Sleep(1000);
+                    await Task.Delay(1000);
                     existTime--;
                 } while (existTime >= 0);
                 Environment.Exit(0);
